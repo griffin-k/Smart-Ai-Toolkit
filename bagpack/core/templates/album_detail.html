@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="p-6 max-w-4xl mx-auto bg-white rounded-xl shadow-lg">
+
+    <h2 class="text-2xl font-bold mb-4 text-center text-gray-800">Album: {{ album_name }}</h2>
+    {% comment %} <a href="{% url 'gallery' %}" class="text-blue-600 underline block mb-6 text-center">← Back to Gallery</a> {% endcomment %}
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+        {% for image in images %}
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+            <img src="{{ image }}" alt="Photo"
+                 class="h-48 w-full object-cover transition duration-300 hover:scale-105 rounded-xl">
+        </div>
+        {% empty %}
+        <p class="text-gray-500 col-span-full text-center">No images in this album.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

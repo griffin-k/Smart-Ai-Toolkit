@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-lg mx-auto mt-6 p-4 bg-white rounded-xl shadow-lg">
+
+    <h1 class="text-xl font-bold text-gray-800 mb-4 text-center">Text to Image</h1>
+
+    <form method="POST" id="imageForm" class="space-y-4">
+        {% csrf_token %}
+        <input type="text" name="prompt" required placeholder="Describe your image..."
+               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+
+        <button type="submit"
+                class="w-full bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 rounded-lg shadow">
+            Generate Image
+        </button>
+
+        <div id="spinner" class="hidden text-center">
+            <svg class="animate-spin h-8 w-8 mx-auto text-pink-600 mt-2" xmlns="http://www.w3.org/2000/svg" fill="none"
+                 viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+            </svg>
+            <p class="text-pink-600 font-medium mt-2">Generating image...</p>
+        </div>
+    </form>
+
+    {% if image_url %}
+    <div id="imageResult" class="mt-6 text-center bg-gray-50 p-4 rounded-lg shadow-inner">
+        <img id="generatedImage" src="{{ image_url }}" alt="Generated Image" class="w-full rounded mb-3 shadow">
+        <div class="flex justify-center gap-6">
+            <button id="downloadJpgBtn"
+                    class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded shadow">
+                Download as JPG
+            </button>
+            <button onclick="regenerateImage()" 
+                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow">
+                Generate New
+            </button>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+    const form = document.getElementById("imageForm");
+    const spinner = document.getElementById("spinner");
+    const imageResult = document.getElementById("imageResult");
+
+    form.addEventListener("submit", () => {
+        spinner.classList.remove("hidden");
+
+        // Remove previous image if it exists
+        if (imageResult) {
+            imageResult.remove();
+        }
+    });
+
+    function regenerateImage() {
+        window.location.href = window.location.pathname; // Reload the same page to reset
+    }
+
+    // JPG Download Logic
+    const downloadBtn = document.getElementById("downloadJpgBtn");
+    if (downloadBtn) {
+        downloadBtn.addEventListener("click", async (e) => {
+            e.preventDefault();
+            const imageUrl = document.getElementById("generatedImage").src;
+
+            const response = await fetch(imageUrl);
+            const blob = await response.blob();
+            const bitmap = await createImageBitmap(blob);
+
+            const canvas = document.createElement('canvas');
+            canvas.width = bitmap.width;
+            canvas.height = bitmap.height;
+
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(bitmap, 0, 0);
+
+            canvas.toBlob((blob) => {
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = 'generated-image.jpg';
+                a.click();
+            }, 'image/jpeg', 0.95);
+        });
+    }
+</script>
+{% endblock %}

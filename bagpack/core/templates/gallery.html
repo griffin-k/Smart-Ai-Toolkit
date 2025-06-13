@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-lg mx-auto mt-6 p-4 bg-white rounded-xl shadow-lg">
+    <h1 class="text-xl font-semibold mb-4 text-center">Smart Gallery</h1>
+
+    <form method="post" enctype="multipart/form-data" class="mb-6">
+        {% csrf_token %}
+        <input type="file" name="images" accept="image/*" multiple
+               class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:border-0 file:bg-blue-100 file:text-blue-700 rounded">
+        <button type="submit"
+                class="mt-2 bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600 w-full">
+            Upload
+        </button>
+    </form>
+
+ <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+    {% for album in albums %}
+    <a href="{% url 'album_detail' album.name %}" class="bg-white rounded shadow p-2 text-center hover:shadow-lg transition">
+        <img src="{{ album.thumbnail }}" alt="{{ album.name }}" class="rounded mb-2 h-40 w-full object-cover">
+        <p class="text-sm text-gray-700 font-medium">{{ album.name }}</p>
+    </a>
+    {% empty %}
+    <p class="text-gray-500 text-sm col-span-full text-center">No albums found. Upload images to get started.</p>
+    {% endfor %}
+</div>
+
+</div>
+{% endblock %}

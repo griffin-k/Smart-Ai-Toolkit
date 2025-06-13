@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-md mx-auto mt-6 p-6 bg-white rounded-xl shadow-md relative">
+  <h2 class="text-xl font-bold text-gray-800 mb-4 text-center">Text to Story</h2>
+
+  <form method="POST" class="space-y-4" id="story-form">
+    {% csrf_token %}
+    <input type="text" name="prompt" placeholder="Enter a prompt..."
+           class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+           required>
+
+    <button type="submit"
+            class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded-lg shadow">
+      Generate Story
+    </button>
+  </form>
+
+  {% if story %}
+  <div class="mt-6 bg-gray-50 p-4 rounded-lg shadow-inner">
+    <h3 class="text-lg font-semibold text-gray-700 mb-2">Generated Story</h3>
+    <p class="text-gray-800 whitespace-pre-line">{{ story }}</p>
+
+    <div class="mt-4 flex justify-between gap-2">
+      <a href="?reset=1"
+         class="flex-1 bg-red-100 text-red-700 py-2 text-center rounded hover:bg-red-200">Generate New</a>
+      <a href="{% url 'download_story' %}"
+         class="flex-1 bg-green-600 text-white py-2 text-center rounded hover:bg-green-700">Download PDF</a>
+    </div>
+  </div>
+  {% endif %}
+
+
+    <div id="spinner" class="flex justify-center mt-6 hidden">
+    <div class="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin"></div>
+  </div>
+
+
+</div>
+
+<script>
+  document.getElementById("story-form").addEventListener("submit", function () {
+    document.getElementById("spinner").classList.remove("hidden");
+  });
+</script>
+{% endblock %}

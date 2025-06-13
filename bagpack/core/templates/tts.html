@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-md mx-auto mt-6 p-4 bg-white rounded-2xl shadow-lg border border-gray-100">
+
+  <h2 class="text-xl font-bold text-gray-800 mb-4 text-center">Text to Speech Converter</h2>
+
+  <form method="POST" class="space-y-4" onsubmit="showSpinner()">
+    {% csrf_token %}
+
+    <textarea name="text" rows="4" required
+              placeholder="Type your text here..."
+              class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 resize-none"></textarea>
+
+    <div>
+      <label for="voice" class="block text-sm font-semibold text-gray-600 mb-1">Select Speaker</label>
+      <select name="voice" id="voice"
+              class="w-full p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500">
+        <option value="en-CA-LiamNeural" {% if selected_voice == 'en-CA-LiamNeural' %}selected{% endif %}>Liam (Male - Canada)</option>
+        <option value="en-US-JennyNeural" {% if selected_voice == 'en-US-JennyNeural' %}selected{% endif %}>Jenny (Female - US)</option>
+        <option value="en-GB-RyanNeural" {% if selected_voice == 'en-GB-RyanNeural' %}selected{% endif %}>Ryan (Male - UK)</option>
+        <option value="en-AU-NatashaNeural" {% if selected_voice == 'en-AU-NatashaNeural' %}selected{% endif %}>Natasha (Female - Australia)</option>
+        <option value="en-IN-NeerjaNeural" {% if selected_voice == 'en-IN-NeerjaNeural' %}selected{% endif %}>Neerja (Female - India)</option>
+      </select>
+    </div>
+
+    <button type="submit" name="convert"
+            class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-xl shadow">
+      Convert to Speech
+    </button>
+  </form>
+
+  <!-- Spinner -->
+  <div id="spinner" class="flex justify-center mt-6 hidden">
+    <div class="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin"></div>
+  </div>
+
+  {% if audio_url %}
+  <div class="mt-6 text-center bg-gray-50 p-4 rounded-xl shadow-inner">
+    <audio controls class="w-full mb-3">
+      <source src="{{ audio_url }}" type="audio/mpeg">
+      Your browser does not support audio.
+    </audio>
+
+    <div class="flex justify-center gap-4">
+      <a href="{{ audio_url }}" download
+         class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg shadow font-medium">
+        Download MP3
+      </a>
+
+      <form method="POST">
+        {% csrf_token %}
+        <button type="submit" name="generate_new"
+                class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg shadow font-medium">
+          Generate New
+        </button>
+      </form>
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+<script>
+  function showSpinner() {
+    document.getElementById("spinner").classList.remove("hidden");
+  }
+</script>
+{% endblock %}
