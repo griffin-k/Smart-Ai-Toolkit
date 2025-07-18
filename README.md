@@ -27,7 +27,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 1.  **Clone the repository:**
     ```bash
-    cd your-repository-name
+    git clone https://github.com/griffin-k/Smart-Ai-Toolkit
+    cd Smart-Ai-Toolkit
     ```
 
 2.  **Create a virtual environment and activate it:**
@@ -83,16 +84,16 @@ Here are some screenshots of the application:
 ![Home Page](screenshots/home.jpeg)
 
 ### Gallery
-![Gallery](screenshots/gallery.jpeg)
+![Gallery](screenshots/gallery.png)
 
 ### AI Creator
-![AI Creator](screenshots/ai_creator.jpeg)
+![AI Creator](screenshots/ai_creator.png)
 
 ### AI Creator Result
-![AI Creator Result](screenshots/ai_creator_result.jpeg)
+![AI Creator Result](screenshots/ai_creator_result.png)
 
 ### Voice Magic
-![Voice Magic](screenshots/voice_magic.jpeg)
+![Voice Magic](screenshots/voice_magic.png)
 
 ### Story Weaver
-![Story Weaver](screenshots/story_weaver.jpeg) 
+![Story Weaver](screenshots/story_weaver.png) 
