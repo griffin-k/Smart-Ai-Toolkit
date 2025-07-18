@@ -74,4 +74,26 @@ requests
 -   Navigate to `http://127.0.0.1:8000/` to access the photo gallery.
 -   Navigate to `http://127.0.0.1:8000/image/` to access the image generator.
 -   Navigate to `http://127.0.0.1:8000/tts/` to access the text-to-speech tool.
--   Navigate to `http://127.0.0.1:8000/story/` to access the story generator. 
+-   Navigate to `http://127.0.0.1:8000/story/` to access the story generator.
+
+## Screenshots
+
+Here are some screenshots of the application:
+
+### Home Page
+![Home Page](screenshots/home.png)
+
+### Gallery
+![Gallery](screenshots/gallery.png)
+
+### AI Creator
+![AI Creator](screenshots/ai_creator.png)
+
+### AI Creator Result
+![AI Creator Result](screenshots/ai_creator_result.png)
+
+### Voice Magic
+![Voice Magic](screenshots/voice_magic.png)
+
+### Story Weaver
+![Story Weaver](screenshots/story_weaver.png) 
