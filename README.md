@@ -27,7 +27,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/your-repository-name.git
     cd your-repository-name
     ```
 
@@ -81,19 +80,19 @@ requests
 Here are some screenshots of the application:
 
 ### Home Page
-![Home Page](screenshots/home.png)
+![Home Page](screenshots/home.jpeg)
 
 ### Gallery
-![Gallery](screenshots/gallery.png)
+![Gallery](screenshots/gallery.jpeg)
 
 ### AI Creator
-![AI Creator](screenshots/ai_creator.png)
+![AI Creator](screenshots/ai_creator.jpeg)
 
 ### AI Creator Result
-![AI Creator Result](screenshots/ai_creator_result.png)
+![AI Creator Result](screenshots/ai_creator_result.jpeg)
 
 ### Voice Magic
-![Voice Magic](screenshots/voice_magic.png)
+![Voice Magic](screenshots/voice_magic.jpeg)
 
 ### Story Weaver
-![Story Weaver](screenshots/story_weaver.png) 
+![Story Weaver](screenshots/story_weaver.jpeg) 
