@@ -1,5 +1,7 @@
 # Smart AI Toolkit
 
+[![GitHub Repository](https://img.shields.io/badge/GitHub-Smart--Ai--Toolkit-blue?logo=github)](https://github.com/griffin-k/Smart-Ai-Toolkit)
+
 This project is a collection of AI-powered tools bundled into a Django web application. It includes features for face recognition in a photo gallery, image generation from text prompts, text-to-speech conversion, and story generation with PDF download.
 
 ## Features
@@ -80,20 +82,40 @@ requests
 
 Here are some screenshots of the application:
 
+<div align="center">
+
 ### Home Page
-![Home Page](screenshots/home.jpeg)
+<img src="screenshots/home.jpeg" alt="Home Page" width="800"/>
 
-### Gallery
-![Gallery](screenshots/gallery.png)
+### Application Features
 
-### AI Creator
-![AI Creator](screenshots/ai_creator.png)
+<table>
+<tr>
+<td align="center" width="50%">
+<h4>Gallery</h4>
+<img src="screenshots/gallery.jpeg" alt="Gallery" width="100%"/>
+</td>
+<td align="center" width="50%">
+<h4>AI Creator</h4>
+<img src="screenshots/ai_creator.jpeg" alt="AI Creator" width="100%"/>
+</td>
+</tr>
+<tr>
+<td align="center" width="50%">
+<h4>AI Creator Result</h4>
+<img src="screenshots/ai_creator_result.jpeg" alt="AI Creator Result" width="100%"/>
+</td>
+<td align="center" width="50%">
+<h4>Voice Magic</h4>
+<img src="screenshots/voice_magic.jpeg" alt="Voice Magic" width="100%"/>
+</td>
+</tr>
+<tr>
+<td align="center" colspan="2">
+<h4>Story Weaver</h4>
+<img src="screenshots/story_weaver.jpeg" alt="Story Weaver" width="50%"/>
+</td>
+</tr>
+</table>
 
-### AI Creator Result
-![AI Creator Result](screenshots/ai_creator_result.png)
-
-### Voice Magic
-![Voice Magic](screenshots/voice_magic.png)
-
-### Story Weaver
-![Story Weaver](screenshots/story_weaver.png) 
+</div> 
